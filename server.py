@@ -714,8 +714,8 @@ async def checkTime():
 # ----------------------------------------------------------------------------------------------------- SCRIPT RUNNER
 instances = []
     
-new_template = { "service": "infinipyv2", "clients": [], "visits": 0 }
-direction_template = { "service": "infinipyv2-direction-template", "direction": -1, "direction_date": None }
+new_template = { "service": "TRADINGSERVER", "clients": [], "visits": 0 }
+direction_template = { "service": "TRADINGSERVER-direction-template", "direction": -1, "direction_date": None }
 
 account1 = {
     "metaapitoken": "meta_api_token",
@@ -751,12 +751,9 @@ async def tradingLogin():
     print("Waiting 3 seconds for database update.")
     await asyncio.sleep(3)
     print("Adding clients to database.")
-    await update_clients(main)
-    print("Client one added.")
-    await update_clients(main2)
-    print("Client two added.")
-    #await update_clients(hema)
-    #print("Client three added.")
+    await update_clients(account1)
+    print("Client added.")
+    
 
     #------------- DATABASE LOG
     #log_db()
@@ -789,8 +786,6 @@ async def tradingLogin():
     await sendemail(f"Direction fetched: {direction}", "Nan")
 
     await update_previsions(True)
-    #global manager
-    #manager = ConnectionManager()
 
 # ----------------------------------------------------------------------------------------------------- INTERVAL_FUNCTIONS
 
